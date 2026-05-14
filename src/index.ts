@@ -23,6 +23,7 @@ program
     await addExpense(options.description, options.amount);
   });
 
+//list command
 program
   .command("list")
   .description("list all expenses")
@@ -30,8 +31,23 @@ program
     await listExpenses();
   });
 
+//delete command
 program
   .command("delete")
   .description("delete a expense")
   .requiredOption("--id <id>", "expense id", parseInt)
   .action(async (opts) => await deleteExpense(opts.id));
+
+program
+  .command("summary")
+  .description("expense summary")
+  .option("--month <month>", "filter by month", parseInt)
+  .action(async (opts) => {
+    if (opts.month) {
+      await monthlyExpenseSummary(opts.month);
+    } else {
+      await expensesSummary();
+    }
+  });
+
+program.parse();
