@@ -78,7 +78,7 @@ export async function listExpenses() {
     }
     expenses.forEach((expense) => {
       console.log(
-        `${expense.id}\t ${expense.date}\t ${expense.description}\t $${expense.amount}`,
+        `ID\t Date\t Description\t Amount\t ${expense.id}\t ${expense.date}\t ${expense.description}\t $${expense.amount}`,
       );
     });
   } catch (error) {
