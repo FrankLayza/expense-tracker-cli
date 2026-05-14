@@ -58,6 +58,52 @@ pnpm build
 pnpm start
 ```
 
+## Testing
+
+To test the CLI functionality, follow these steps:
+
+1. Build the project:
+
+   ```bash
+   pnpm build
+   ```
+
+2. Add some test expenses:
+
+   ```bash
+   node dist/index.js add --description "Lunch" --amount 20
+   node dist/index.js add --description "Dinner" --amount 15
+   ```
+
+3. List all expenses:
+
+   ```bash
+   node dist/index.js list
+   ```
+
+4. View total expenses summary:
+
+   ```bash
+   node dist/index.js summary
+   ```
+
+5. View monthly summary (e.g., for May):
+
+   ```bash
+   node dist/index.js summary --month 5
+   ```
+
+6. Delete an expense by ID:
+
+   ```bash
+   node dist/index.js delete --id 1
+   ```
+
+7. Verify the deletion by listing again:
+   ```bash
+   node dist/index.js list
+   ```
+
 ## Project Structure
 
 ```
