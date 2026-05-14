@@ -78,7 +78,7 @@ export async function listExpenses() {
     }
     expenses.forEach((expense) => {
       console.log(
-        `ID\t Date\t Description\t Amount\t ${expense.id}\t ${expense.date}\t ${expense.description}\t $${expense.amount}`,
+        `${expense.id}\t ${expense.date}\t ${expense.description}\t $${expense.amount}`,
       );
     });
   } catch (error) {
@@ -102,6 +102,10 @@ export async function expensesSummary() {
 }
 
 export async function monthlyExpenseSummary(month: number) {
+  if (!month) {
+    console.error("No month provided");
+    return;
+  }
   const expenses = await readExpenseFile();
   const monthlyExpenses = expenses.filter((expense) => {
     const expenseMonth = new Date(expense.date).getMonth() + 1;
